@@ -39,6 +39,7 @@
 						<th>工作证编号</th>
 						<th>姓名</th>
 						<th>身份证号码</th>
+						<th>权限</th>
 						<th>操作</th>
 					</tr>
 					<volist name="person" id="vo">
@@ -46,7 +47,8 @@
 							<td><{$vo.workID}></td>
 							<td><a href="#" onclick='$("#right").load("__APP__/Personnel_info/info_more/pid/<{$vo.pid}>")'><{$vo.name}></a></td>
 							<td><{$vo.IDNo}></td>
-							<td><a href="#" onclick='$("#right").load("__APP__/Personnel_info/person_editor/pid/<{$vo.pid}>")'>修改/</a><a href="__APP__/Personnel_info/person_del/pid/<{$vo.pid}>" onclick="return confirmd()" >删除　</a><a href="#" onclick='$("#right").load("__APP__/Authority/change_authority/pid/<{$vo.pid}>")'>修改权限</a></td>
+							<td><{$vo.authority}></td>
+							<td><a href="#" onclick='$("#right").load("__APP__/Personnel_info/person_editor/pid/<{$vo.pid}>")'>修改/</a><a href="__APP__/Personnel_info/person_del/pid/<{$vo.pid}>" onclick="return confirmd()" >删除/</a><a href="#" onclick='$("#right").load("__APP__/Authority/change_authority/pid/<{$vo.pid}>")'>修改权限</a></td>
 						</tr>
 					</volist>
 				</table>

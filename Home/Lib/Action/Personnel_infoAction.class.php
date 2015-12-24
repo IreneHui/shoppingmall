@@ -50,6 +50,11 @@
 			$page->setConfig('header','条信息');
 			$show=$page->show();//返回分页信息
 			$arr=$p->limit($page->firstRow.','.$page->listRows)->select();
+			$a=M('authority');
+			for($i=0;$i<sizeof($arr);$i++){
+				$where['aid']=$arr[$i]['authority'];
+				$arr[$i]['authority']=$a->where($where)->getfield('aname');
+			}
 			$this->assign('person',$arr);
 			$this->assign('show',$show);
 			if(!$flag){

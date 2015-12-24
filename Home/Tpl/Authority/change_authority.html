@@ -27,17 +27,16 @@
 				<form action="__APP__/Authority/do_change_authority" id="change_authority" method="post">
 					<input type="hidden" name="pid" value="<{$pid}>">
 					<div class="form-group">
-						<input type="radio" name="authority" value="1">管理员
-						<input type="radio" name="authority" value="2">人事岗
-						<input type="radio" name="authority" value="3">领导用户
-						<input type="radio" name="authority" value="4">普通用户
-						<input type="radio" name="authority" value="5">自定义<br><br>
+						<volist name="authority" id="vo">
+							<input type="radio" name="authority" value="<{$vo.aid}>"><{$vo.aname}>　
+						</volist>
+						<br><br>
 						<fieldset>
 							<legend>如为自定义，请选择所需菜单</legend>
 							<volist name='menu' id='vo'>
 								<label><{$vo.f_name}></label>
 								<volist name='vo.second' id='vo1'>
-								<input type="checkbox" name="function[]" value="<{$vo1.ef_name}>"><{$vo1.f_name}>
+								<input type="checkbox" name="function[]" value="<{$vo1.ef_name}>"><{$vo1.f_name}>　
 								</volist><br><br>
 								</volist>
 						</fieldset>

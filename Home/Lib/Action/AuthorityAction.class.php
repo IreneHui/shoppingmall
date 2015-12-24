@@ -32,6 +32,9 @@
 			$f=M("function");
 			$where["level"]="1";
 			$arr=$f->where($where)->select();
+			$a=M('authority');
+			$arr1=$a->select();
+			$this->assign('authority',$arr1);
 			$this->assign("first_menu",$arr);
 			$this->display();
 		}
@@ -85,6 +88,9 @@
 			$arr=$f->find($f_id);
 			$where['father_id']=0;
 			$arr['belongto']=$f->where($where)->select();
+			$a=M('authority');
+			$arr1=$a->select();
+			$this->assign('authority',$arr1);
 			$this->assign("menu",$arr);
 			$this->display();
 		}
@@ -123,7 +129,13 @@
 			}
 			$p=M('personal_info');
 			$test['pid']=$_GET['pid'];
+			if(empty($test['pid'])){
+				$test['pid']=$_SESSION['pid'];
+			}
 			$name=$p->where($test)->getField('name');
+
+			$arr1=$a->select();
+			$this->assign('authority',$arr1);
 			$this->assign('name',$name);
 			$this->assign('menu',$first);
 			$this->assign('pid',$_GET['pid']);
