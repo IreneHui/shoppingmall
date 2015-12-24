@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>个人信息</title>
+	<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="__Js__/jquery.min.js"></script>
+    <script src="__Js__/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="__Css__/style.css">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+		<div class="row">
+			<div class="col-md-4 content-title"><span class="">工资社保>><a href="#" onclick='$("#right").load("__APP__/Salary_ss/sss_personal")'>个人查询</a>>><a href="#" onclick='$("#right-below").load("__APP__/Salary_ss/salary_info/year/<{$info.year}>/month/<{$info.month}>")'>社保信息</a></span></div>
+		</div>
+		<div class="row ">
+			<div class="col-md-8">
+				<table class="table table-bordered table-striped">
+					<tr>
+						<td>年份</td>
+						<td><{$info.year}></td>						
+					</tr>
+					<tr>
+						<td>月份</td>
+						<td><{$info.month}></td>				
+					</tr>
+					<tr>
+						<td>个人缴存</td>
+						<td><{$info.personal_deposit}></td>					
+					</tr>
+					<tr>
+						<td>单位缴存</td>
+						<td><{$info.unit_deposit}></td>
+					</tr>
+					<tr>
+						<td>个人账户</td>
+						<td><{$info.account_balance}></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

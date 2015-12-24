@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工资修改</title>
+	<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="__Js__/jquery.min.js"></script>
+    <script src="__Js__/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="__Css__/style.css">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+		<div class="row">
+			<div class="col-md-4 content-title"><span class="">工资社保>><a href="#" onclick='$("#right").load("__APP__/Salary_ss/sss_management")'>工资社保管理</a>>><a href="#" onclick='$("#right-below").load("__APP__/Salary_ss/salary_editor/year/<{$info.year}>/month/<{$info.month}>")'>工资修改</a></span></div>
+		</div>
+		<div class="row ">
+			<div class="col-md-12">
+				<form name="person_modi" id="person_modi" action="__APP__/Salary_ss/salary_modi" method="post">
+			<input type="hidden" name="sid" value="<{$info.sid}>" id="sid">
+				<table class="table">
+					<div class="form-group">
+					<tr>
+						<td>姓名</td>
+						<td><input id="name" name="name" class="form-control" type="text" value="<{$info.name}>" disabled></td>						
+						<td>工作证编号</td>
+						<td><input name="workID" id="workID" class="form-control" type="text" value="<{$info.workID}>" disabled></td>
+					</tr>
+					</div>
+					<div class="form-group">
+					<tr>
+						<td>年份</td>
+						<td><input name="year" id="workID" class="form-control" type="text" value="<{$info.year}>" ></td>
+						<td>月份</td>
+						<td><input name="month" type="text" class="form-control" value="<{$info.month}>"></td>
+					</tr>
+					</div>
+					<div class="form-group">
+					<tr>
+						<td>科室</td>
+						<td><input class="form-control" type="text" name="department" value="<{$info.department}>"></td>
+						<td>年龄</td>
+						<td><input type="text" class="form-control" name="age" value="<{$info.age}>"></td>
+					</tr>
+					</div>
+					<div class="form-group">
+					<tr>
+						<td>职务工资</td>
+						<td><input type="text" class="form-control" name="post_salary" value="<{$info.post_salary}>"></td>
+						<td>级别工资</td>
+						<td><input type="text" class="form-control" name="level_salary" value="<{$info.level_salary}>">
+						</td>
+					</tr>
+					</div>
+					<div class="form-group">
+					<tr>
+						<td>岗位工资</td>
+						<td><input class="form-control" type="text" name="job_salary" value="<{$info.job_salary}>"></td>
+						<td>技术等级工资</td>
+						<td><input class="form-control" type="text" name="technical_salary" value="<{$info.technical_salary}>"></td>
+					</tr>
+					</div>
+					<div class="form-group">
+					<tr>
+						<td>基础工资</td>
+						<td><input type="text" name="basic_salary" value="<{$info.basic_salary}>" class="form-control"></td>
+						<td>其他工资</td>
+						<td><input type="text" name="other_salary" value="<{$info.other_salary}>" class="form-control"></td>
+					</tr>
+					</div>
+					<div class="form-group">
+					<tr>
+						<td>试用期工资</td>
+						<td><input type="text" name="probation_salary" class="form-control" value="<{$info.probation_salary}>"></td>
+						<td>特区津贴</td>
+						<td><input type="text" class="form-control" name="special_region_allowance" value="<{$info.special_region_allowance}>"></td>
+					</tr>
+					</div>
+					<div class="form-group">
+					<tr>
+						<td>生活性补贴</td>
+						<td><input type="text" name="living_allowance" value="<{$info.living_allowance}>" class="form-control"></td>
+						<td>工资性补贴</td>
+						<td><input type="text" name="salary_allowance" value="<{$info.salary_allowance}>" class="form-control"></td>
+					</tr>
+					</div>
+					<div class="form-group">
+					<tr>
+						<td>改革性津贴</td>
+						<td><input type="text" name="reform_allowance" value="<{$info.reform_allowance}>" class="form-control"></td>
+						<td>薪级工资</td>
+						<td><input type="text" name="salary_level_salary" value="<{$info.salary_level_salary}>" class="form-control"></td>
+					</tr>
+					</div>
+					<div class="form-group">
+					<tr>
+						<td>其他津贴</td>
+						<td><input type="text" name="other_allowance" value="<{$info.other_allowance}>"class="form-control"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					</div>					
+					</div>
+				</table>
+				<div class="form-group col-md-offset-5">
+				<button type="submit" class="btn btn-default" >确认修改</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

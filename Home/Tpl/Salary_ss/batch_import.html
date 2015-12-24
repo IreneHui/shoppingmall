@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="__Js__/jquery.min.js"></script>
+    <script src="__Js__/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="__Css__/style.css">
+    <script>
+    $(document).ready(function(){
+    	if(<{$error}>=="1")
+    		alert("导入成功");
+    })
+    </script>
+	<title>工资社保批量导入</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4 content-title"><span class="">工资社保>><a href="#" onclick='$("#right").load("__APP__/Salary_ss/batch_import")'>工资社保批量导入</a></span></div>
+		</div>
+		<div class="row" id="right-below">
+		<form id="batch_import" name="batch_import" method="post" enctype="multipart/form-data" action="__APP__/Salary_ss/do_batch_import">
+			<div class="form-group">
+				<input type="radio" name="sss" value="salary">导入工资信息
+				<input type="radio" name="sss" value="social_security">导入社保信息
+				<input type="radio" name="sss" value="accumulation_fund">导入公积金信息
+			</div>
+			<div class="form-group">
+				<input type="file" name="file">
+			</div>
+			<button class="btn btn-defalut" type="submit">上传</button>
+		</form><br><br><br>
+		<form method="Get" id="copy_form">
+
+			<button class="btn btn-default" onclick="copy_form.action = '__APP__/Salary_ss/copy_last_month/sss/salary'">复制上月工资信息</button>
+			<button class="btn btn-default" onclick="copy_form.action = '__APP__/Salary_ss/copy_last_month/sss/social_security'">复制上月社保信息</button>
+			<button class="btn btn-default" onclick="copy_form.action = '__APP__/Salary_ss/copy_last_month/sss/accumulation_fund'">复制上月公积金信息</button>
+		</form>
+		</div>
+		<div class="row">
+			<div class="col-md-9 text-center"><{$show}></div>
+		</div>
+	</div>
+</body>
+</html>

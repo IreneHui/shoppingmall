@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>老干部信息</title>
+	<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="__Js__/jquery.min.js"></script>
+    <script src="__Js__/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="__Css__/style.css">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+		<div class="col-md-12 content-title"><span class="">老干部管理>><a href="#" onclick='$("#right").load("__APP__/Veteran/veteran_info/vid/<{$pi.vid}>")'>老干部信息</a> </span></div></div>
+		<div class="row ">
+			<div class="col-md-12">
+				<table class="table table-bordered table-striped">
+					<tr>
+						<td>姓名</td>
+						<td><{$pi.name}></td>
+						<td>工作证编号</td>
+						<td><{$pi.workID}></td>
+					</tr>
+					<tr>
+						<td>退休时间</td>
+						<td><{$pi.retire_time}></td>
+						<td>家庭地址</td>
+						<td><{$pi.address}></td>
+					</tr>
+					<tr>
+						<td>家庭电话</td>
+						<td><{$pi.telephone}></td>
+						<td>手机号码</td>
+						<td><{$pi.mobile}></td>
+					</tr>
+					<tr>
+						<td>性别</td>
+						<td><{$pi.gender}></td>
+						<td>出生日期</td>
+						<td><{$pi.birthday}></td>
+					</tr>
+					<tr>
+						<td>籍贯</td>
+						<td><{$pi.birthplace}></td>
+						<td>民族</td>
+						<td><{$pi.nationality}></td>
+					</tr>
+					<tr>
+						<td>婚姻情况</td>
+						<td><{$pi.marital_status}></td>
+						<td>政治面貌</td>
+						<td><{$pi.political_affiliation}></td>
+					</tr>
+					<tr>
+						<td>参加党派时间</td>
+						<td><{$pi.partisan_time}></td>
+						<td>学历</td>
+						<td><{$pi.education}></td>
+					</tr>
+					<tr>
+						<td>学位</td>
+						<td><{$pi.degree}></td>
+						<td>专业</td>
+						<td><{$pi.major}></td>
+					</tr>
+					<tr>
+						<td>身份证号码</td>
+						<td><{$pi.IDNo}></td>
+						<td>任职部门</td>
+						<td><{$pi.department}></td>
+					</tr>
+					<tr>
+						<td>现任职务</td>
+						<td><{$pi.current_post}></td>
+						<td>职务级别</td>
+						<td><{$pi.post_level}></td>
+					</tr>
+					<tr>
+						<td>享受级别待遇</td>
+						<td><{$pi.treatment_level}></td>
+						<td>薪级</td>
+						<td><{$pi.salary_level}></td>
+					</tr>
+					<tr>
+						<td>编制类型</td>
+						<td><{$pi.establishment}></td>
+						<td>参加工作时间</td>
+						<td><{$pi.worktime}></td>
+					</tr>
+					<tr>
+						<td>任现职务时间</td>
+						<td><{$pi.current_post_time}></td>
+						<td>任现职级时间</td>
+						<td><{$pi.current_level_time}></td>
+					</tr>
+					<tr>
+						<td>调入深圳时间</td>
+						<td><{$pi.SZ_time}></td>
+						<td>进入本单位时间</td>
+						<td><{$pi.unit_time}></td>
+					</tr>
+					<tr>
+						<td>套转前职务</td>
+						<td><{$pi.previous_job}></td>
+						<td>任套转前职务时间</td>
+						<td><{$pi.previous_job_time}></td>
+					</tr>
+					<tr>
+						<td>套转前职级</td>
+						<td><{$pi.previous_level}></td>
+						<td>任套转前职级时间</td>
+						<td><{$pi.previous_level_time}></td>
+					</tr>
+					<tr>
+						<td>来本局任科长时间</td>
+						<td><{$pi.section_chief_time}></td>
+						<td>任本岗位时间</td>
+						<td><{$pi.current_job_time}></td>
+					</tr>
+					<tr>
+						<td>职务变动说明</td>
+						<td><{$pi.job_change_description}></td>
+						<td>领导排名</td>
+						<td><{$pi.leader_ranking}></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

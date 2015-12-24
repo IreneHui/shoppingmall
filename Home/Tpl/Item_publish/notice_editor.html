@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>通知</title>
+	<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="__Js__/jquery.min.js"></script>
+    <script src="__Js__/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="__Css__/style.css">
+    <script>
+        $(document).ready(function(){
+    	//性别
+    	if('<{$notice.category}>'=="普通消息"){
+    		document.getElementsByName("category")[0].checked=true;
+    	}
+    	else{
+			document.getElementsByName("category")[1].checked=true;
+    	}
+    	if(<{$notice.istop}>==1){
+    		document.getElementsByName("istop")[0].checked=true;
+    	}
+    });
+        
+    </script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4 content-title"><span class="">事项发布>><a href="#" onclick='$("#right").load("__APP__/Item_publish/notice_editor/nid/<{$notice.nid}>")'>通知修改</a></span></div>
+		</div>
+		<div class="row ">
+			<div class="col-md-9 col-md-offset-1">
+			
+				<form action="__APP__/Item_publish/notice_modi" method="post">
+				<div class="form-group">
+				<input type="hidden" name="nid" value="<{$notice.nid}>">
+						<label>标题</label>
+						<input value="<{$notice.title}>"class="form-control"id="title" mexlength="50" name="title" type="text">
+					</div>
+					<div class="form-group">
+						<label for="category ">消息类型　</label>
+						<input type="radio" name="category" value="普通消息" class="radio-inline">普通消息
+						<input type="radio" name="category" value="人事科消息" class="radio-inline">人事科消息
+					</div>
+					<div class="form-group"><label for="istop">是否置顶　</label><input type="checkbox" name="istop"></div>
+					<div class="form-group"><label for="topday">置顶天数</label><input value="<{$notice.topday}>" type="text" class="form-control" name="topday"></div>
+					<div class="ueditor">
+					<script type="text/javascript" charset="gbk">window.UEDITOR_HOME_URL = "__Ueditor__/";//编辑器项目路径</script>
+							
+						<!-- 加载编辑器的容器 -->
+
+						<script id="container" name="content" type="text/plain"><{$notice.content}></script>
+						
+						<input class="ueditor_submit" type="submit" value="提交" onclick="notice_editor.action = '__APP/Item_publish/notice_modi'"></input>
+
+					<!-- 配置文件 -->
+					<script type="text/javascript" src="__Ueditor__/ueditor.config.js"></script>
+					<!-- 编辑器源码文件 -->
+					<script type="text/javascript" src="__Ueditor__/ueditor.all.js"></script>
+					<!-- 实例化编辑器 -->
+					<script type="text/javascript">var ue = UE.getEditor('container');</script>
+					</div>
+				</form>
+			<!--编辑器加载结束-->
+		
+			</div>
+		</div>
+	</div>
+</body>
+</html>

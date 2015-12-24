@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="__Js__/jquery.min.js"></script>
+    <script src="__Js__/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="__Css__/style.css">
+    <script>
+        function confirmd() {  
+            var msg = "确认要删除吗？";  
+            if (confirm(msg)==true){  
+                return true;  
+            }else{  
+                return false;  
+            }  
+        }
+        
+    </script>
+	<title>维护干部信息</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4 content-title"><span class="">人员信息>><a href="#" onclick='$("#right").load("__APP__/Personnel_info/maintain_info")'>维护干部信息</a></span></div>
+			<div class="search col-md-8">
+				<form action="__APP__/Personnel_info/search_person" method="post" class="form-inline">
+					<div class="form-group">
+						<input type="text" class="form-control" name="search_person" placeholder="请输入姓名或工作证编号">
+					</div>
+					<button class="btn btn-default">搜索</button>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<table class="table">
+					<tr>
+						<th>工作证编号</th>
+						<th>姓名</th>
+						<th>身份证号码</th>
+						<th>操作</th>
+					</tr>
+					<volist name="person" id="vo">
+						<tr>
+							<td><{$vo.workID}></td>
+							<td><a href="#" onclick='$("#right").load("__APP__/Personnel_info/info_more/pid/<{$vo.pid}>")'><{$vo.name}></a></td>
+							<td><{$vo.IDNo}></td>
+							<td><a href="#" onclick='$("#right").load("__APP__/Personnel_info/person_editor/pid/<{$vo.pid}>")'>修改/</a><a href="__APP__/Personnel_info/person_del/pid/<{$vo.pid}>" onclick="return confirmd()" >删除</a></td>
+						</tr>
+					</volist>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-9 text-center"><{$show}></div>
+		</div>
+	</div>
+</body>
+</html>

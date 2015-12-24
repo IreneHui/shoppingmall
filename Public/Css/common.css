@@ -1,0 +1,279 @@
+﻿@charset "utf-8";
+html{overflow-y: scroll;}
+body{
+	font: 12px "微软雅黑",simsun,Arial;
+	background: #999;
+	background-image:url("../../Images/Common/images/background.jpg");
+	word-wrap:break-word;
+	word-break:break-all;
+	background-attachment:fixed;
+}
+body,ul,li{
+	margin:0;
+	padding:0;
+}
+/*页面宽度*/
+#main{
+	width: 980px;
+	margin: 0 auto;
+	background-color: rgb( 255, 255, 255 );
+	box-shadow: 2.5px 4.33px 5px 0px rgb( 156, 155, 155 );
+
+}
+
+/*清除浮动*/
+.clearfix{
+	*zoom: 1;
+}
+.clearfix:after{
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: ".";
+	clear: both;
+	height: 0;
+}
+/*搜索框*/
+#search {
+	position: relative;
+	float: right;
+	margin-top: 85px;
+	margin-right: 10px;
+	width: 195px;
+	height: 26px;
+	background: #ffffff;
+}
+.search_form{
+	overflow: hidden;
+	border: 1px solid #8C0A41;
+}
+
+.search_txt {
+	float: left;
+	font-size: 14px;
+	padding:0 0 0 5px;
+	font-family: "微软雅黑","Microsoft Yahei",Tahoma;
+	background-color: white;
+	height: 24px;
+	color: #666;
+}
+.search_btn{
+	float: left;
+	color: white;
+	font-family: "微软雅黑";
+	width: 33px;
+	height: 28px;
+	cursor: pointer;
+	margin-left: 1px;
+	border-color: #8C0A41;
+	background-color: #8C0A41;
+}
+#login 
+{
+	position: absolute;
+	left: 1118px;
+	top:40px; 
+}
+
+#login a{
+	text-decoration: none;
+	color: rgb( 113, 113, 113 );
+	font-family: "微软雅黑";
+	font-size: 18px;
+}
+#logout
+{
+	position: absolute;
+	left: 1080px;
+	top:40px; 
+}
+#logout a{
+	text-decoration: none;
+	color: rgb( 113, 113, 113 );
+	font-family: "微软雅黑";
+	font-size: 14px;
+}
+#logout a:hover{
+	text-decoration: none;
+	color: red;
+	font-family: "微软雅黑";
+	font-size: 14px;
+}
+#head_logo{
+	float: left;
+	margin-top:20px;
+	margin-left: 10px;
+}
+#head_pic{
+	width:310px;
+	height:200px;
+}
+#head_pic ul{
+	list-style: none;
+	position: absolute;
+	width:310px;
+	height:200px;
+}
+#head_pic ul li {
+	position: absolute;
+	cursor:pointer;
+	width:155px;
+	height:100px;
+	overflow:hidden;
+	z-index: 1;
+}
+#head_pic ul li img{
+	position: absolute;
+}
+.left-top{
+	top:0;
+	left:0;
+}
+.right-top{
+	right:0;
+	top:0
+}
+.left-bottom{
+	left:0;
+	bottom:0;
+}
+.right-bottom{
+	right:0;
+	bottom:0;
+}
+.left-top img{
+	top:0;
+	left:0;
+}
+.right-top img{
+	right:0;
+	top:0
+}
+.left-bottom img{
+	left:0;
+	bottom:0;
+}
+.right-bottom img{
+	right:0;
+	bottom:0;
+}
+/*导航*/
+#nav{
+	margin-top:5px;
+	padding-left:10px;
+	font-family:"微软雅黑","Microsoft Yahei",Tahoma;
+	border-bottom: 3px solid 
+#8C0A41
+;
+}
+#nav ul{
+	list-style: none;
+}
+.first-nav{
+	float:left; 
+	border-right:1px solid #fff; 
+}
+.first-nav a{
+	color:#333; 
+	text-decoration:none; 
+	display:block; 
+	line-height:32px;
+	padding:0 10px;
+	font-size:14px;
+}
+#nav .on a{
+	color:#fff; 
+	text-decoration:none; 
+	background:
+#8C0A41
+;
+}
+.first-nav a:hover{
+	color:#fff; 
+	text-decoration:none; 
+	background:
+#8C0A41
+;
+}
+
+.first-nav ul{
+	display:none; 
+	position:absolute;
+	border-top: 3px solid #F06600;
+	z-index:9999;
+}
+.first-nav a:hover .second-nav ul li{
+	display: block;
+}
+.first-nav li{
+	border-top:1px solid #fff; 
+	background:
+#8C0A41
+; 
+	width:140px;
+}
+.first-nav .second-nav a{
+	color:#fff;
+	line-height:28px;
+	font-size: 14px;
+}
+#nav .first-nav .second-nav a:hover{
+	background:#8C0A41;
+	color:#333;
+}
+/*主体*/
+#content{
+	padding:0 10px;
+	margin-top:10px;
+}
+/*尾部*/
+#footer{
+	margin:10px 0 10px 0;
+	border-top: 3px solid #8C0A41
+;
+	text-align: center;
+	font-size: 12px;
+	color: black;
+	font-family: "微软雅黑","Microsoft Yahei",Tahoma;
+}
+#link{
+	padding-left:80px;
+}
+#link ul{	
+	list-style:none;
+}
+#link ul li {
+	float:left;
+	padding:0 10px 0 10px;
+	font-size:14px;
+}
+
+#copyright{
+	padding: 10px;
+	font-size:14px;
+}
+#copyright a{
+	color:black;
+	text-decoration:none;
+}
+#copyright a:hover{
+    color:red;
+}
+#contactinfo{
+	margin:0;
+	height:0;
+}
+/*弹出层插件*/
+.pop-div-in{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin: -20px 0 0 -70px;
+	background: white url(../../image/loading.gif) no-repeat scroll 10px center;
+	border-radius: 3px;
+	border: solid 3px #369;
+	padding: 10px 10px 10px 50px;
+	-moz-box-shadow: 5px 5px 5px #666;
+	-webkit-box-shadow: 5px 5px 5px #666;
+	box-shadow: 5px 5px 5px #666;
+}

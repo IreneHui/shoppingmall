@@ -1,0 +1,264 @@
+@CHARSET "UTF-8";
+/************ 左边部分***************/ 
+
+#content_left{
+	width:195px;
+	float:left;
+	}
+#list_title{
+	margin-top:5px;
+	font-family:"微软雅黑","Microsoft Yahei",Tahoma;
+	border:1px solid #D5D5D5;
+	background:#F9F9F9;
+}
+#search {
+	position: relative;
+	float: right;
+	margin-top: 85px;
+	margin-right: 10px;
+	width: 195px;
+	height: 26px;
+	background: #ffffff;
+}
+.search_form{
+	margin:0;
+	padding: 0;
+	border: 1px solid #8C0A41;
+}
+
+.search_txt {
+	line-height: 22px;
+	font-size: 14px;
+	margin:0;
+	padding:0 0 0 5px;
+	font-family: "微软雅黑","Microsoft Yahei",Tahoma;
+	background-color: white;
+	height: 24px;
+	border: 0px solid  #8C0A41;
+	border-right: 0px solid  #8C0A41;
+	color: #666;
+}
+.search_btn{
+	vertical-align: top;
+	color: white;
+	font-family: "微软雅黑";
+	margin:0;
+	width: 33px;
+	height: 24px;
+	cursor: pointer;
+	border-color: #8C0A41;
+	background-color: #8C0A41;
+}
+#headtitle{
+	color:#000000;
+	font-size:20px;
+	height:35px;
+	line-height:35px;
+	text-align:center;
+}
+#list_title ul{
+	list-style:none;
+	text-align:center;
+	padding:0 10px;
+}
+#list_title ul li{
+	font-family:"宋体","Microsoft Yahei",Tahoma;
+    margin:4px 0;
+    padding: 0;
+	font-size:9pt;
+	/*height:30px;*/
+	line-height:30px;
+	background:#F1F1F1;
+}
+#list_title ul li a{
+    display:block;
+    text-decoration:none;
+    border-bottom:1px solid #ADADAD;
+	border-right:1px solid #ADADAD;
+    
+}
+#list_title .list_on{
+	color:blue;
+    background:#DEDDDD;
+}
+#list_title ul li a:hover{
+	color:#000000;
+    background:#DEDDDD;
+}
+ 
+
+/*****************右边内容**********************/
+
+#content_right{
+	float:left;
+	width:752px;
+	margin-left:10px;
+	border-left:1px solid #d3d3d3;
+	min-height:500px;
+	height:auto;
+	_height:500px;    /*//ie6*/
+} 
+#location{
+	height:22px;
+    font-size:14px;
+	line-height:20px;
+	font-family:"微软雅黑","Microsoft Yahei",Tahoma;
+    margin:2px 20px;
+	border-bottom:1px solid #38A2DE;
+}
+#location .list-left{
+	float:left;
+}
+#location .list-right{
+    float:right;
+    /*font-size:15px;*/
+}
+#location .list-right a{
+	color:#000;
+	text-decoration:none;
+}
+#location .list-right a:hover{
+    color:red;
+}
+/************ 左边导航***************/
+#content_left{
+	width: 195px;
+	float: left;
+}
+#search{
+	position: relative;
+	float: right;
+	margin-top: 85px;
+	margin-right: 10px;
+	width: 195px;
+	height: 26px;
+	background:#ffffff;
+}
+#list_title{
+	margin-top:5px;
+	font-family: "微软雅黑","Microsoft Yahei",Tahoma;
+	border:1px solid #8C0A41;
+	border-radius: 4px;
+	background: white; 
+}
+
+/*******左侧导航焦点*******/
+#list_title .list_on{/*侧边导航栏选中时的效果*/
+	color: white;
+  	border-radius: 3px;
+  	background-color: #8C0A41;		
+}
+#headtitle{ /*导航栏名称*/
+	color: black;
+	font-size: 20px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+}
+
+#list_title ul{
+	list-style:none;
+	text-align: center;
+	padding:0 10px;
+	margin: 0;
+}
+
+#list_title ul li{
+	font-family:Tahoma,"微软雅黑","Microsoft Yahei";
+	margin: 8px 0;
+	padding: 0;
+	font-size: 13px;
+	height: 30px;
+	line-height: 30px;	
+}
+#list_title ul li a{
+	display: block;
+	text-decoration: none;
+	border-bottom: 1px solid #8C0A41;
+	border-right: 1px solid #8C0A41;
+	border-top: 1px solid #8C0A41;
+	border-left: 1px solid #8C0A41;
+	border-radius: 3px;	
+
+}
+#list_title ul li a:hover{
+	color: white;
+	background:#8C0A41;
+}
+.list ul li a{
+	color: black;
+}
+.list ul li a:hover{
+	color: red;
+}
+#show_list{
+	margin:0;
+	padding:0;
+}
+#show_list ul{
+	margin:0 20px;
+	list-style:none;
+	font:14px tahoma, Arial, "宋体", Verdana, sans-serif;
+}
+#show_list ul li{
+	display:block;
+	text-indent:1em;
+	height: 26px;
+	line-height:26px;
+    margin:5px 0;
+    border-bottom:1px dashed #CCC;
+    position: relative;
+}
+#show_list ul li .list-left{
+	float:left;
+}
+#show_list ul li a{
+	color:black;
+	text-decoration:none;
+}
+#show_list ul li a:hover{
+	color:#ff2d2d;
+	text-decoration: underline;
+}
+
+#show_list ul li .list-right{
+	padding-right:10px;
+	float:right;
+	color: #999;
+}
+#show_list .setBottom {
+	border-radius: 5px;
+  	background-color: rgb( 34, 42, 53 );
+  	width: 41px;
+  	height: 26px;
+}
+
+#pagebar{
+	margin-top:10px;
+	font-size:14px;
+	height: 26px;
+	line-height: 26px;
+	text-align:center;
+}
+#pagebar a{
+	text-decoration:none;
+	padding:3px 5px;
+    border:1px solid #ccc;
+    vertical-align: middle;
+}
+#pagebar a:hover{
+	color:red;
+    border:1px solid red;
+}
+#pagebar input{
+	vertical-align: middle;
+}
+/***************  类  *********************/
+
+.list  a{
+	color:black;
+}
+.list  a:hover{
+	color:red;
+}
+
