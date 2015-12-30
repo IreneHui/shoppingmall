@@ -1,8 +1,8 @@
 <?php 
 	class Item_publishAction extends PremiseAction{
-		function notice(){
+		function staff_notice(){
 			$a=M('notice');
-			$where['category']="普通消息";
+			$where['category']="员工通知";
 			import('ORG.Util.Page');// 导入分页类
 			$count=$a->where($where)->count();//获取数据的总数
 			$page  = new Page($count,15);//
@@ -23,64 +23,24 @@
 				$_POST['istop']=1;
 			$a->create();
 			if($a->add()){
-				$this->redirect('Index/index',array('page1'=>'Item_publish','page2'=>'personnel_notice'),1,"add successfully");
+				$this->redirect('Index/index',array('page1'=>'Item_publish','page2'=>'notice_management'),1,"add successfully");
 			}
 			else{
 				$this->redirect('Index/index',array('page1'=>'Item_publish','page2'=>'notice_publish'),1,"add error");
 		}}
-		function personnel_notice($flag=null){
+		function store_notice($flag=null){
 			$a=M('notice');
-			$where['category']="普通消息";
-			$where1['category']=array('in',array("人事科消息","系统消息"));
+			$where['category']="商家通知";
 
 			import('ORG.Util.Page');// 导入分页类
 			$count=$a->where($where)->count();//获取数据的总数
-			$count1=$a->where($where1)->count();
 			$page  = new Page($count,10);//
 			$page->setConfig('header','条信息');
 			$show=$page->show();//返回分页信息
-			import('ORG.Util.Page');// 导入分页类
-			$page1  = new Page($count1,10);//
-			$page1->setConfig('header','条信息');
-			$show1=$page1->show();//返回分页信息
 			
-			$v=M('veteran');
-			$p=M('personal_info');
-			import('ORG.Util.Date');// 导入日期类
-			$vd=M('veteran_date');
-			$date=$vd->where(1)->getField('veteran_date');
-			$veteran=$v->select();//dump($veteran);
-			Load('extend');
-			for($i=0;$i<sizeof($veteran);$i++){	
-				$veteran[$i]['birthday']=msubstr($veteran[$i]['birthday'], 5, 5, "utf-8",false);
-				$Date = new Date('2015-'.$veteran[$i]['birthday']);
-				// $year=floor(($Date->dateDiff(time(),$elaps="M"))/12);  // 比较日期差
-				// $year1=date('Y',time())-$year;dump($year1);
-				// $date=date('m-d',time());
-				$time=$Date->dateDiff(time(),$elaps="d");
-				if($time<0&&abs($time)<=$date){
-					$vwhere['title']="请注意".$veteran[$i]['name']."在".$veteran[$i]['birthday']."的生日即将到来！";
-					if($a->where($vwhere)->find())continue;
-					$vwhere['createtime']=date('Y-m-d',time());
-					$vwhere['department']=$p->where($_SESSION['pid'])->getField('department');
-					$vwhere['category']="系统消息";
-					$vwhere['istop']=1;
-					$vwhere['topday']=$time;
-					$a->add($vwhere);
-				}
-			}
-			$where3['category']="系统消息";
-			$arr3=$a->where($where3)->select();
-			for($i=0;$i<sizeof($arr3);$i++){
-				$Date = new Date(time());
-				$time=$Date->dateDiff($arr3[$i]['createtime'],$elaps="d");
-			}
 			$arr=$a->order('istop desc,createtime desc')->where($where)->limit($page->firstRow.','.$page->listRows)->select();
-			$arr1=$a->order('istop desc,createtime desc')->where($where1)->limit($page1->firstRow.','.$page1->listRows)->select();
 			$this->assign('show',$show);
-			$this->assign('show1',$show1);
-			$this->assign("notice",$arr);
-			$this->assign('personnel_notice',$arr1);
+			$this->assign("store_notice",$arr);
 			if(!$flag)
 			$this->display();
 		}

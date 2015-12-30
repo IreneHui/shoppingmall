@@ -52,7 +52,7 @@
 							<td><a href="#" onclick='$("#right").load("__APP__/Salary_ss/salary_more/sid/<{$vo.sid}>")'><{$vo.name}></a></td>
 							<td><{$vo.IDNo}></td>
 							<td><{$vo.post_salary}></td>
-							<td><a href="#" onclick='$("#right").load("__APP__/Salary_ss/salary_editor/sid/<{$vo.sid}>")'>修改/</a><a href="__APP__/Salary_ss/salary_del/sid/<{$vo.sid}>" onclick="return confirmd()" >删除</a></td>
+							<td><a href="#" onclick='$("#right").load("__APP__/Salary_ss/salary_info/sid/<{$vo.sid}>")'>具体/</a><a href="#" onclick='$("#right").load("__APP__/Salary_ss/salary_editor/sid/<{$vo.sid}>")'>修改/</a><a href="__APP__/Salary_ss/salary_del/sid/<{$vo.sid}>" onclick="return confirmd()" >删除</a></td>
 						</tr>
 					</volist>
 				</table>

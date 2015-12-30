@@ -54,6 +54,39 @@
 			for($i=0;$i<sizeof($arr);$i++){
 				$where['aid']=$arr[$i]['authority'];
 				$arr[$i]['authority']=$a->where($where)->getfield('aname');
+				if($arr[$i]['gender']==1){
+					$arr[$i]['gender']='男';
+				}
+				else{
+					$arr[$i]['gender']='女';
+				}
+			}
+			$this->assign('person',$arr);
+			$this->assign('show',$show);
+			if(!$flag){
+				$this->display();
+			}
+		}
+		//显示所有人员信息列表
+		function staff($flag=null){
+			$p=M('personal_info');
+			import('ORG.Util.Page');// 导入分页类
+			$where['authority']=3;
+			$count=$p->where($where)->count();//获取数据的总数
+			$page  = new Page($count,15);//
+			$page->setConfig('header','条信息');
+			$show=$page->show();//返回分页信息
+			$arr=$p->where($where)->limit($page->firstRow.','.$page->listRows)->select();
+			$a=M('authority');
+			for($i=0;$i<sizeof($arr);$i++){
+				$where['aid']=$arr[$i]['authority'];
+				$arr[$i]['authority']=$a->where($where)->getfield('aname');
+				if($arr[$i]['gender']==1){
+					$arr[$i]['gender']='男';
+				}
+				else{
+					$arr[$i]['gender']='女';
+				}
 			}
 			$this->assign('person',$arr);
 			$this->assign('show',$show);
@@ -75,7 +108,13 @@
 			$p=M('personal_info');
 			$result=$p->delete($pid);
 			if($result){
-				$this->redirect('Index/index',array('page1'=>'Personnel_info','page2'=>'maintain_info'),1,"delete successfully");
+				if($_GET['authority']==3){
+					$this->redirect('Index/index',array('page1'=>'Personnel_info','page2'=>'staff'),1,"delete successfully");
+				}
+				else if($_GET['authority']==4){
+					$this->redirect('Index/index',array('page1'=>'Personnel_info','page2'=>'store_pic'),1,"delete successfully");
+				}
+				else $this->redirect('Index/index',array('page1'=>'Personnel_info','page2'=>'maintain_info'),1,"delete successfully");
 			}
 			else{
 				$this->redirect('Index/index',array('page1'=>'Personnel_info','page2'=>'maintain_info'),1,"delete error");
@@ -87,6 +126,7 @@
 			$p=M('personal_info');
 			$arr=$p->find($pid);
 			$this->assign("pi",$arr);
+			$this->assign('authority',$_GET['authority']);
 			$this->display();
 		}
 		//编辑人员信息
@@ -95,7 +135,13 @@
 			$p->create();
 			$result=$p->save();
 			if($result){
-				$this->redirect('Index/index',array('page1'=>'Personnel_info','page2'=>'maintain_info'),1,"modify successfully");
+				if($_POST['authority']==3){
+					$this->redirect('Index/index',array('page1'=>'Personnel_info','page2'=>'staff'),1,"modify successfully");
+				}
+				else if($_POST['authority']==4){
+					$this->redirect('Index/index',array('page1'=>'Personnel_info','page2'=>'store_pic'),1,"modify successfully");
+				}
+				else $this->redirect('Index/index',array('page1'=>'Personnel_info','page2'=>'maintain_info'),1,"modify successfully");
 			}
 			else{
 				$this->redirect('Index/index',array('page1'=>'Personnel_info','page2'=>'maintain_info'),1,"modify error");
@@ -134,8 +180,28 @@
 			R('Index/menu');
 			$this->display('Index/index');
 		}
+		function search_staff(){
+        	$data1['workID']=$_POST['search_person'];
+			$data1['name']=array('like',"%{$_POST['search_person']}%");
+			$data1['_logic']='or';
+			$data['_complex']=$data1;
+			$data['authority']=3;
+			$p=M("personal_info");
+			import('ORG.Util.Page');// 导入分页类
+			$count=$p->count();//获取数据的总数
+			$page  = new Page($count,15);//
+			$page->setConfig('header','条信息');
+			$show=$page->show();//返回分页信息
+			$arr=$p->limit($page->firstRow.','.$page->listRows)->where($data)->select();
+			$this->assign('person',$arr);
+			$this->assign('show',$show);
+			$this->assign('page',"Personnel_info/staff");
+			R('Index/menu');
+			$this->display('Index/index');
+		}
 		//添加人员信息页面
 		function add_personal_info(){
+			$this->assign('authority',$_GET['authority']);
 			$this->display();
 		}
 		//添加人员信息
@@ -143,6 +209,13 @@
 			$p=M('personal_info');
 			$p->create();
 			if($p->add()){
+				if($_POST['authority']==3){
+					$this->redirect('Index/index',array('page1'=>'Personnel_info','page2'=>'staff'),1,"add successfully");
+				}
+				else if($_POST['authority']==4){
+					$this->redirect('Index/index',array('page1'=>'Personnel_info','page2'=>'store_pic'),1,"add successfully");
+
+				}
 				$this->redirect('Index/index',array('page1'=>'Personnel_info','page2'=>'maintain_info'),1,"add successfully");
 
 			}else{
@@ -201,5 +274,45 @@
         else
             $this->redirect('Index/index',array('page1'=>'Personnel_info','page2'=>'import_person'),1,'batch import error');
     }
+    function store_pic($flag=null){
+			$p=M('personal_info');
+			import('ORG.Util.Page');// 导入分页类
+			$where['authority']=4;
+			$count=$p->where($where)->count();//获取数据的总数
+			$page  = new Page($count,15);//
+			$page->setConfig('header','条信息');
+			$show=$page->show();//返回分页信息
+			$arr=$p->where($where)->limit($page->firstRow.','.$page->listRows)->select();
+			$a=M('authority');
+			$sl=M('store_location');
+			$sc=M('store_category');
+			$st=M('store');
+			$where['pic']=32;
+			$arr1=$st->where($where)->select();
+			for($i=0;$i<sizeof($arr);$i++){
+				$st=M('store');
+				$where['pic']=$arr[$i]['pid'];
+				$arr[$i]['store']=$st->where($where)->select();
+				for($j=0;$j<sizeof($arr[$i]['store']);$j++){
+					$where['slid']=$arr[$i]['store'][$j]['slid'];
+					$arr[$i]['store'][$j]['slname']=$sl->where($where)->getfield('slname');
+					$where['scid']=$arr[$i]['store'][$j]['scid'];
+					$arr[$i]['store'][$j]['scname']=$sc->where($where)->getfield('scname');
+					
+				}
+				$where=array();
+				if($arr[$i]['gender']==1){
+					$arr[$i]['gender']='男';
+				}
+				else{
+					$arr[$i]['gender']='女';
+				}
+			}
+			$this->assign('person',$arr);
+			$this->assign('show',$show);
+			if(!$flag){
+				$this->display();
+			}
+		}
 	}
  ?>

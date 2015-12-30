@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>修改商户</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12 content-title"><span>商户管理>><a href="#" 
+			onclick='$("#right").load("__APP__/Store/change_store_editor/stid/<{$store.stid}>")'>修改商户</a></span></div>
+		</div>
+		<div class="row">
+			<div class="col-md-7 col-md-offset-1">
+				<form action="__APP__/Store/modi_change_store" method="post">
+					<input type="hidden" name="stid" id="stid" value="<{$store.stid}>">
+					<input type="hidden" name="origin_slid" id="origin_slid" value="<{$store.slid}>">
+					  <div class="form-group">
+					    <label for="stname">商户名称</label>
+					    <input type="text" class="form-control" name="stname" id="stname" placeholder="请输入商户名称" value="<{$store.stname}>">
+					  </div>
+					 
+					  
+					  <div class="form-group">
+					    <label for="stid">类别</label>
+					    <select name="scid" id="scid" class="form-control">
+					    	<option value="<{$store.scid}>"><{$store.scname}></option>
+					    	<volist name='category' id='vo'>
+					    		<neq name='vo.scid' value='$store.scid'>
+					    			<option value="<{$vo.scid}>"><{$vo.scname}></option>
+					    		</neq>
+					    	</volist>
+					    </select>
+					  </div>
+					  <div class="ueditor">
+					<script type="text/javascript" charset="gbk">window.UEDITOR_HOME_URL = "__Ueditor__/";//编辑器项目路径</script>
+							
+						<!-- 加载编辑器的容器 -->
+
+						<script id="container" name="stdescription" type="text/plain"><{$store.stdescription}></script>
+						<!-- <input class="ueditor_submit" type="submit" value="提交"></input> -->
+
+					<!-- 配置文件 -->
+					<script type="text/javascript" src="__Ueditor__/ueditor.config.js"></script>
+					<!-- 编辑器源码文件 -->
+					<script type="text/javascript" src="__Ueditor__/ueditor.all.js"></script>
+					<!-- 实例化编辑器 -->
+					<script type="text/javascript">var ue = UE.getEditor('container');</script>
+					</div>
+					  <button type="submit" class="btn btn-default">确认修改</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

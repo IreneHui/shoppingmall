@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="__Js__/jquery.min.js"></script>
+    <script src="__Js__/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="__Css__/style.css">
+    <script>
+        function confirmd() {  
+            var msg = "确认要删除吗？";  
+            if (confirm(msg)==true){  
+                return true;  
+            }else{  
+                return false;  
+            }  
+        }
+        
+    </script>
+	<title>商家管理</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<eq name='message' value='1'>
+			<div class="row">
+			<h2>此处为商家负责人编辑商家信息处，高级权限者请前往<a href="#" onclick='$("#right").load("__APP__/Store/store_management")'>商家管理</a>进行编辑</h2></div>
+		<else/>
+		<div class="row">
+			<div class="col-md-4 content-title"><span class="">商店管理>><a href="#" onclick='$("#right").load("__APP__/Store/change_store_info")'>商家修改信息</a></span></div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<table class="table">
+					<tr>
+						<th>商户名称</th>
+						<th>位置</th>
+						<th>类别</th>
+						<th>商城负责人</th>
+						<th>操作</th>
+					</tr>
+					<volist name="store" id="vo">
+						<tr>
+							<td><a href="#" onclick='$("#right").load("__APP__/Store/store_more/stid/<{$vo.stid}>")'><{$vo.stname}></a></td>
+							<td><{$vo.slname}></td>
+							<td><{$vo.scname}></td>
+							<td><{$vo.name}></td>
+							<td><a href="#" onclick='$("#right").load("__APP__/Store/change_store_editor/stid/<{$vo.stid}>")'>修改信息</a></td>
+						</tr>
+					</volist>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-9 text-center"><{$show}></div>
+		</div></eq>
+	</div>
+</body>
+</html>

@@ -36,9 +36,9 @@
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
-		        <li><a href="#" onclick='$("#right-below").load("__APP__/Salary_ss/salary_info/year/<{$info.year}>/month/<{$info.month}>")'>工资 </a></li>
-		        <li><a href="#" onclick='$("#right-below").load("__APP__/Salary_ss/social_security_info/year/<{$info.year}>/month/<{$info.month}>")'>社保</a></li>
-		     	<li><a href="#" onclick='$("#right-below").load("__APP__/Salary_ss/accumulation_fund_info/year/<{$info.year}>/month/<{$info.month}>")'>公积金</a></li>
+		        <li><a href="#" onclick='$("#right-below").load("__APP__/Salary_ss/salary_info/year/<{$info.year}>/month/<{$info.month}>/pid/<{$info.pid}>")'>工资 </a></li>
+		        <li><a href="#" onclick='$("#right-below").load("__APP__/Salary_ss/social_security_info/year/<{$info.year}>/month/<{$info.month}>/pid/<{$info.pid}>")'>社保</a></li>
+		     	<li><a href="#" onclick='$("#right-below").load("__APP__/Salary_ss/accumulation_fund_info/year/<{$info.year}>/month/<{$info.month}>/pid/<{$info.pid}>")'>公积金</a></li>
 		      </ul>
 		      <form class="navbar-form navbar-left" role="search" method="post" action="__APP__/Salary_ss/search_year">
 		        <div class="form-group">
@@ -49,8 +49,8 @@
 		      <div class="row">
 			<div class="col-md-12 month_div">
 				年份：<strong><{$year}>　</strong>,请选择需要的月份<br>
-				<volist name="month" id="vo" mod="3">
-					<button class="btn btn-default month_button navbar-btn " onclick='$("#right").load("__APP__/Salary_ss/sss_personal/year/<{$year}>/month/<{$month["$i"]-1}>")'><{$vo}>月</button>
+				<volist name="month" id="vo">
+					<button class="btn btn-default month_button navbar-btn " onclick='$("#right").load("__APP__/Salary_ss/sss_personal/year/<{$year}>/month/<{$month[$i-1]}>/pid/<{$info.pid}>")'><{$vo}>月</button>
 				</volist>
 			</div>
 		</div>

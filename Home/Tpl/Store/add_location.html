@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>添加位置</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12 content-title"><span>商户管理>><a href="#" 
+			onclick='$("#right").load("__APP__/Store/add_location")'>添加位置</a></span></div>
+		</div>
+		<div class="row">
+			<div class="col-md-5 col-md-offset-2">
+				<form action="__APP__/Store/do_add_location" method="post">
+					<form>
+					  <div class="form-group">
+					    <label for="slname">商户位置</label>
+					    <input type="text" class="form-control" name="slname" id="slname" placeholder="请输入商户位置，如L4-123">
+					  </div>
+					  <div class="form-group">
+					  	<label for="floor" class="">所属楼层</label>
+						<div class="input-group">    
+						    <input type="number" class="form-control" name="floor" id="floor" placeholder="请输入所属楼层，数字即可">
+						    <div class="input-group-addon">　楼　</div>
+					  	</div>
+					  </div>
+					  <div class="form-group">
+					    <label for="area">面积（平方米）</label>
+					    <div class="input-group">
+					    <input type="number" class="form-control" name="area" id="area" placeholder="请输入所属面积，数字即可">
+					    <div class="input-group-addon">　平方米　</div>
+					  </div></div>
+					  <div class="form-group">
+					    <label for="price">价钱（元）</label>
+					    <div class="input-group">
+					    <input type="number" class="form-control" name="price" id="price" placeholder="请输入位置价钱，数字即可">
+					    <div class="input-group-addon">　元　</div>
+					  </div></div>
+					  <div class="form-group">
+					    <label for="stid">位置上的商户</label>
+					    <select name="stid" id="stid" class="form-control">
+					    	<volist name='store' id='vo'>
+					    		<option value="<{$vo.stid}>"><{$vo.stname}></option>
+					    	</volist>
+					    </select>
+					  </div>
+					  <button type="submit" class="btn btn-default">确认添加</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

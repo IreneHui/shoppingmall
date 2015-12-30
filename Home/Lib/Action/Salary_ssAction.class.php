@@ -38,7 +38,7 @@
 
 		}
 		function sss_personal($flag=null){
-			if($_GET['year']){
+			if($_GET['year']&&$_GET['year']!='month'){
 				$year=$_GET['year'];
 			}
 			else
@@ -49,22 +49,35 @@
 			if($_GET['month'])
 				$this->assign('cmonth',$_GET['month']);
 			else
-				$this->assign('cmonth','1');
+				$this->assign('cmonth',date('m',time()));
 			$info['year']=$year;
 			$info['month']=$cmonth;
 			$this->assign('info',$info);
 			$this->assign('month',$month);
 			$this->assign('year',$year);
-			R("Salary_ss/salary_info",array('year'=>$year,'month'=>$cmonth));
+			R("Salary_ss/salary_info",array('year'=>$year,'month'=>$cmonth,'pid'=>$_GET['pid']));
 			if(!$flag)
 				$this->display();
 		}
 		function salary_info($flag=null){
 			$salary=M('salary');
-			$where['year']=$_GET['year'];
-			$where['month']=$_GET['month'];
-			$where['pid']=$_SESSION['pid'];
+			if(!$_GET['sid']){
+				$where['year']=$_GET['year'];
+				$where['month']=$_GET['month'];
+				if($_GET['pid']){
+					$where['pid']=$_GET['pid'];
+				}
+				else{
+					$where['pid']=$_SESSION['pid'];
+				}
+			}
+			else{
+				$where['sid']=$_GET['sid'];
+			}
 			$arr=$salary->where($where)->find();
+			if($_GET['pid']){
+				$arr['pid']=$_GET['pid'];
+			}
 			$this->assign('info',$arr);
 			$this->assign('page1','salary_info');
 			if(!$flag)
@@ -72,9 +85,19 @@
 		}
 		function social_security_info($flag=null){
 			$ss=M('social_security');
-			$where['year']=$_GET['year'];
-			$where['month']=$_GET['month'];
-			$where['pid']=$_SESSION['pid'];
+			if(!$_GET['ssid']){
+				$where['year']=$_GET['year'];
+				$where['month']=$_GET['month'];
+				if($_GET['pid']){
+					$where['pid']=$_GET['pid'];
+				}
+				else{
+					$where['pid']=$_SESSION['pid'];
+				}
+			}
+			else{
+				$where['ssid']=$_GET['ssid'];
+			}
 			$arr=$ss->where($where)->find();
 			$this->assign('info',$arr);
 			$this->assign('page1','social_security_info');
@@ -83,9 +106,19 @@
 		}
 		function accumulation_fund_info($flag=null){
 			$af=M('accumulation_fund');
-			$where['year']=$_GET['year'];
-			$where['month']=$_GET['month'];
-			$where['pid']=$_SESSION['pid'];
+			if(!$_GET['afid']){
+				$where['year']=$_GET['year'];
+				$where['month']=$_GET['month'];
+				if($_GET['pid']){
+					$where['pid']=$_GET['pid'];
+				}
+				else{
+					$where['pid']=$_SESSION['pid'];
+				}
+			}
+			else{
+				$where['afid']=$_GET['afid'];
+			}
 			$arr=$af->where($where)->find();
 			$this->assign('info',$arr);
 			$this->assign('page1','accumulation_fund_info');
@@ -224,6 +257,23 @@
 			$data['month']=$_POST['search_salary'];
 			$data['_logic']='or';
 			$info=$salary->where($data)->select();
+			if($_GET['year']&&$_GET['year']!='month'){
+				$year=$_GET['year'];
+			}
+			else
+				$year=date('Y',time());
+			if($_GET['month'])
+				$cmonth=$_GET['month'];
+			else{
+				$cmonth=date('m',time());
+			}
+			$p=M('personal_info');
+			for($i=0;$i<sizeof($info);$i++){
+				$info[$i]['workID']=$p->where($info[$i]['pid'])->getfield('workID');
+				$info[$i]['IDNo']=$p->where($info[$i]['pid'])->getfield('IDNo');
+			}
+			$this->assign('year',$year);
+			$this->assign('month',$cmonth);
 			$this->assign('info',$info);
 			$this->assign('page','Salary_ss/sss_management');
 			$this->assign('page1','Salary_ss/salary_list');
@@ -245,6 +295,18 @@
 				$info[$i]['IDNo']=$p->where($data)->getfield('IDNo');	
 				$info[$i]['name']=$p->where($data)->getfield('name');
 			}
+			if($_GET['year']&&$_GET['year']!='month'){
+				$year=$_GET['year'];
+			}
+			else
+				$year=date('Y',time());
+			if($_GET['month'])
+				$cmonth=$_GET['month'];
+			else{
+				$cmonth=date('m',time());
+			}
+			$this->assign('year',$year);
+			$this->assign('month',$cmonth);
 			$this->assign('info',$info);
 			$this->assign('page','Salary_ss/sss_management');
 			$this->assign('page1','Salary_ss/social_security_list');
@@ -266,6 +328,18 @@
 				$info[$i]['IDNo']=$p->where($data)->getfield('IDNo');	
 				$info[$i]['name']=$p->where($data)->getfield('name');
 			}
+			if($_GET['year']&&$_GET['year']!='month'){
+				$year=$_GET['year'];
+			}
+			else
+				$year=date('Y',time());
+			if($_GET['month'])
+				$cmonth=$_GET['month'];
+			else{
+				$cmonth=date('m',time());
+			}
+			$this->assign('year',$year);
+			$this->assign('month',$cmonth);
 			$this->assign('info',$info);
 			$this->assign('page','Salary_ss/sss_management');
 			$this->assign('page1','Salary_ss/accumulation_fund_list');

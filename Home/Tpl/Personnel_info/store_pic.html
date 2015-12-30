@@ -22,39 +22,37 @@
 <body>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-4 content-title"><span class="">人员信息>><a href="#" onclick='$("#right").load("__APP__/Personnel_info/maintain_info")'>用户管理</a></span></div>
-			<div class="search col-md-8">
-				<form action="__APP__/Personnel_info/search_person" method="post" class="form-inline">
-					<div class="form-group">
-						<input type="text" class="form-control" name="search_person" placeholder="请输入姓名或工作证编号">
-					</div>
-					<button class="btn btn-default">搜索</button>
-				</form>
-			</div>
+			<div class="col-md-4 content-title"><span class="">人员信息>><a href="#" onclick='$("#right").load("__APP__/Personnel_info/store_pic")'>商户负责人管理</a></span></div>
 		</div>
 		<div class="row">
-			<div class="col-md-12"><a href="#" class="btn btn-default" onclick='$("#right").load("__APP__/Personnel_info/add_personal_info")'>添加用户 </a></div>
+			<div class="col-md-12"><a href="#" class="btn btn-default" onclick='$("#right").load("__APP__/Personnel_info/add_personal_info/authority/4")'>添加负责人 </a></div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
 				<table class="table">
-					<tr>
-						<th>工作证编号</th>
+					<tr>					
 						<th>姓名</th>
+						<th>工作证编号</th>
 						<th>性别</th>
 						<th>身份证号码</th>
-						<th>权限</th>
 						<th>操作</th>
 					</tr>
 					<volist name="person" id="vo">
-						<tr>
-							<td><{$vo.workID}></td>
+						<tr class="menu_first">
+							
 							<td><a href="#" onclick='$("#right").load("__APP__/Personnel_info/info_more/pid/<{$vo.pid}>")'><{$vo.name}></a></td>
+							<td><{$vo.workID}></td>
 							<td><{$vo.gender}></td>
 							<td><{$vo.IDNo}></td>
-							<td><{$vo.authority}></td>
-							<td><a href="#" onclick='$("#right").load("__APP__/Personnel_info/person_editor/pid/<{$vo.pid}>")'>修改/</a><a href="__APP__/Personnel_info/person_del/pid/<{$vo.pid}>" onclick="return confirmd()" >删除/</a><a href="#" onclick='$("#right").load("__APP__/Authority/change_authority/pid/<{$vo.pid}>")'>修改权限/</a><a href="#" onclick='$("#right").load("__APP__/Salary_ss/sss_personal/pid/<{$vo.pid}>")'>查看工资社保</a></td>
+							<td><a href="#" onclick='$("#right").load("__APP__/Personnel_info/person_editor/pid/<{$vo.pid}>/authority/4")'>修改/</a><a href="__APP__/Personnel_info/person_del/pid/<{$vo.pid}>/authority/4" onclick="return confirmd()" >删除</a></td>
 						</tr>
+						<volist name="vo.store" id="vo1">
+							<tr class="menu_second">
+								<td>------<{$vo1.stname}></td>
+								<td><{$vo1.slname}></td>
+								<td><{$vo1.scname}></td>
+							</tr>
+						</volist>
 					</volist>
 				</table>
 			</div>

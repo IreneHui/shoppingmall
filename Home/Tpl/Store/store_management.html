@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="__Js__/jquery.min.js"></script>
+    <script src="__Js__/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="__Css__/style.css">
+    <script>
+        function confirmd() {  
+            var msg = "确认要删除吗？";  
+            if (confirm(msg)==true){  
+                return true;  
+            }else{  
+                return false;  
+            }  
+        }
+        
+    </script>
+	<title>商家管理</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4 content-title"><span class="">商店管理>><a href="#" onclick='$("#right").load("__APP__/Store/store_management")'>商家管理</a></span></div>
+			<div class="search col-md-8">
+				<form action="__APP__/Store/search_store" method="post" class="form-inline">
+					<div class="form-group">
+						<input type="text" class="form-control" name="search_person" placeholder="请输入商家名称">
+					</div>
+					<button class="btn btn-default">搜索</button>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12"><a href="#" class="btn btn-default" onclick='$("#right").load("__APP__/Store/add_store")'>添加商户 </a></div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table">
+					<tr>
+						<th>商户名称</th>
+						<th>位置</th>
+						<th>类别</th>
+						<th>商城负责人</th>
+						<th>操作</th>
+					</tr>
+					<volist name="store" id="vo">
+						<tr>
+							<td><a href="#" onclick='$("#right").load("__APP__/Store/store_more/stid/<{$vo.stid}>")'><{$vo.stname}></a></td>
+							<td><{$vo.slname}></td>
+							<td><{$vo.scname}></td>
+							<td><{$vo.name}></td>
+							<td><a href="#" onclick='$("#right").load("__APP__/Store/store_editor/stid/<{$vo.stid}>")'>修改/</a><a href="__APP__/Store/store_del/stid/<{$vo.stid}>" onclick="return confirmd()" >删除</a></td>
+						</tr>
+					</volist>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-9 text-center"><{$show}></div>
+		</div>
+	</div>
+</body>
+</html>

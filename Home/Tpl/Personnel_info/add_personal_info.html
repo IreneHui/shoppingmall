@@ -59,6 +59,7 @@
 			<div class="col-md-11">
 			<form name="person_modi" id="person_modi" action="__APP__/Personnel_info/do_add_person" method="post">
 			<input type="hidden" name="pid" value="<{$pi.pid}>">
+			<input type="hidden" name="authority" value="<{$authority}>">
 				<table class="table">
 					<div class="form-group">
 					<tr>
@@ -148,57 +149,9 @@
 						<td><input type="date" name="worktime" value="<{$pi.worktime}>" class="form-control"></td>
 					</tr>
 					</div>
-					<div class="form-group">
-					<tr>
-						<td>任现职务时间</td>
-						<td><input type="date" name="current_post_time" value="<{$pi.current_post_time}>" class="form-control"></td>
-						<td>任现职级时间</td>
-						<td><input type="date" name="current_level_time" value="<{$pi.current_level_time}>" class="form-control"></td>
-					</tr>
-					</div>
-					<div class="form-group">
-					<tr>
-						<td>调入深圳时间</td>
-						<td><input type="date" name="SZ_time" value="<{$pi.SZ_time}>" class="form-control"></td>
-						<td>进入本单位时间</td>
-						<td><input type="date" name="unit_time" value="<{$pi.unit_time}>" class="form-control"></td>
-					</tr>
-					</div>
-					<div class="form-group">
-					<tr>
-						<td>套转前职务</td>
-						<td><input type="text" name="previous_job" value="<{$pi.previous_job}>" class="form-control"></td>
-						<td>任套转前职务时间</td>
-						<td><input type="date" name="previous_job_time" value="<{$pi.previous_job_time}>"  class="form-control"></td>
-					</tr>
-					</div>
-					<div class="form-group">
-					<tr>
-						<td>套转前职级</td>
-						<td><input type="text" name="previous_level" value="<{$pi.previous_level}>" class="form-control"></td>
-						<td>任套转前职级时间</td>
-						<td><input type="date" name="previous_level_time" value="<{$pi.previous_level_time}>" class="form-control"></td>
-					</tr>
-					</div>
-					<div class="form-group">
-					<tr>
-						<td>来本局任科长时间</td>
-						<td><input type="date" name="section_chief_time" value="<{$pi.section_chief_time}>" class="form-control"></td>
-						<td>任本岗位时间</td>
-						<td><input type="date" name="current_job_time" value="<{$pi.current_job_time}>" class="form-control"></td>
-					</tr>
-					</div>
-					<div class="form-group">
-					<tr>
-						<td>职务变动说明</td>
-						<td><textarea name="job_change_description" cols="20" rows="5" class="form-control"><{$pi.job_change_description}></textarea></td>
-						<td>领导排名</td>
-						<td><input type="text" name="leader_ranking" value="<{$pi.leader_ranking}>" class="form-control"></td>
-					</tr>
-					</div>
 				</table>
 				<div class="form-group col-md-offset-5">
-				<button type="submit" class="btn btn-default" >确认修改</button>
+				<button type="submit" class="btn btn-default" >确认添加</button>
 				</div>
 				</form>
 			</div>

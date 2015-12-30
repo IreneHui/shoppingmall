@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>添加礼物</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12 content-title"><span>会员管理>><a href="#" 
+			onclick='$("#right").load("__APP__/Member/add_gift")'>添加礼物</a></span></div>
+		</div>
+		<div class="row">
+			<div class="col-md-5 col-md-offset-2">
+				<form action="__APP__/Member/do_add_gift" method="post">
+					<form>
+					  <div class="form-group">
+					    <label for="gname">礼物名称</label>
+					    <input type="text" class="form-control" name="gname" id="gname" placeholder="请输入礼物名称">
+					  </div>
+					   <div class="form-group">
+					    <label for="credit">所需积分</label>
+					    <input type="number" class="form-control" name="credit" id="credit" placeholder="请输入积分">
+					  </div>
+					  <div class="form-group">
+					    <label for="amount">数量</label>
+					    <input type="text" class="form-control" name="amount" id="amount" placeholder="请输入礼物数量">
+					  </div>
+					  <button type="submit" class="btn btn-default">确认添加</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

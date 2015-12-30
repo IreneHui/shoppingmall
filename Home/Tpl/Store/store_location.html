@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="__Js__/jquery.min.js"></script>
+    <script src="__Js__/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="__Css__/style.css">
+    <script>
+        function confirmd() {  
+            var msg = "确定要删除？";  
+            if (confirm(msg)==true){  
+                return true;  
+            }else{  
+                return false;  
+            }  
+        }
+        function total_confirmd(){
+        	var msg = "删除一级菜单会连带删除其下所有二级菜单，确认删除？";  
+            if (confirm(msg)==true){  
+                return true;  
+            }else{  
+                return false;  
+            }  
+        }
+    </script>
+	<title>位置管理</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12 content-title"><span class="">商户管理>><a href="#" onclick='$("#right").load("__APP__/Store/store_location")'>商城位置管理</a></span></div>
+		</div>
+		<div class="row">
+			<div class="col-md-12"><a href="#" onclick='$("#right").load("__APP__/Store/add_location")'class="btn btn-default">新增位置</a></div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<table class="table">
+					<tr>
+						<th>位置</th>
+						<th>面积</th>
+						<th>价钱</th>
+						<th>占用情况</th>
+						<th>操作</th>
+					</tr>
+					<volist name="floor" id="vo">
+						<tr class="menu_first">
+							<td>第<{$vo.floor}>层</td>
+						</tr>
+						<volist name="vo.store" id="vo1">
+							<tr class="menu_second">
+								<td>------<{$vo1.slname}></td>
+								<td><{$vo1.area}></td>
+								<td><{$vo1.price}></td>
+								<eq name="vo1.stid" value="0">
+									<td style="color:red">空闲</td>
+									<else/>
+									<td><{$vo1.stname}></td>
+								</eq>
+								<td><a href="#" onclick='$("#right").load("__APP__/Store/location_editor/slid/<{$vo1.slid}>")'>修改/</a><a href="__APP__/Store/location_del/slid/<{$vo1.slid}>"onclick="return confirmd() ">删除</a></td>
+							</tr>
+						</volist>
+					</volist>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="__Js__/jquery.min.js"></script>
+    <script src="__Js__/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="__Css__/style.css">
+    <script>
+        function confirmd() {  
+            var msg = "确认要删除吗？";  
+            if (confirm(msg)==true){  
+                return true;  
+            }else{  
+                return false;  
+            }  
+        }
+        
+    </script>
+	<title>会员管理</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4 content-title"><span class="">会员信息>><a href="#" onclick='$("#right").load("__APP__/Member/credit")'>会员管理</a></span></div>
+			<div class="search col-md-8">
+				<form action="__APP__/Member/search_member" method="post" class="form-inline">
+					<div class="form-group">
+						<input type="text" class="form-control" name="search_person" placeholder="请输入会员名称或手机号">
+					</div>
+					<button class="btn btn-default">搜索</button>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12"><a href="#" class="btn btn-default" onclick='$("#right").load("__APP__/Member/add_member")'>添加会员 </a></div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table">
+					<tr>
+						<th>姓名</th>
+						<th>手机号</th>
+						<th>积分</th>
+						<th>会员级别</th>
+						<th>生日</th>
+						<th>会员日期</th>
+						<th>操作</th>
+					</tr>
+					<volist name="member" id="vo">
+						<tr>
+							<td><{$vo.mname}></td>
+							<td><{$vo.phone}></td>
+							<td><{$vo.credit}></td>
+							<td><{$vo.level}></td>
+							<td><{$vo.birthday}></td>
+							<td><{$vo.mtime}></td>
+							<td><a href="#" onclick='$("#right").load("__APP__/Member/member_editor/mid/<{$vo.mid}>)'>修改/</a><a href="__APP__/Member/member_del/mid/<{$vo.mid}>" onclick="return confirmd()" >删除/</a><a href="#" onclick='$("#right").load("__APP__/Member/member_upgrade/mid/<{$vo.mid}>")'>会员升级/</a><a href="#" onclick='$("#right").load("__APP__/Member/gift_exchange/mid/<{$vo.mid}>")'>积分更换礼品</a></td>
+						</tr>
+					</volist>
+				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-9 text-center"><{$show}></div>
+		</div>
+	</div>
+</body>
+</html>

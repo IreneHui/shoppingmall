@@ -17,14 +17,14 @@
         }
         
     </script>
-	<title>用户管理</title>
+	<title>员工管理</title>
 </head>
 <body>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-4 content-title"><span class="">人员信息>><a href="#" onclick='$("#right").load("__APP__/Personnel_info/maintain_info")'>用户管理</a></span></div>
+			<div class="col-md-4 content-title"><span class="">人员信息>><a href="#" onclick='$("#right").load("__APP__/Personnel_info/staff")'>员工管理</a></span></div>
 			<div class="search col-md-8">
-				<form action="__APP__/Personnel_info/search_person" method="post" class="form-inline">
+				<form action="__APP__/Personnel_info/search_staff" method="post" class="form-inline">
 					<div class="form-group">
 						<input type="text" class="form-control" name="search_person" placeholder="请输入姓名或工作证编号">
 					</div>
@@ -33,7 +33,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12"><a href="#" class="btn btn-default" onclick='$("#right").load("__APP__/Personnel_info/add_personal_info")'>添加用户 </a></div>
+			<div class="col-md-12"><a href="#" class="btn btn-default" onclick='$("#right").load("__APP__/Personnel_info/add_personal_info/authority/3")'>添加员工 </a></div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
@@ -43,7 +43,8 @@
 						<th>姓名</th>
 						<th>性别</th>
 						<th>身份证号码</th>
-						<th>权限</th>
+						<th>职位</th>
+						<th>任职部门</th>
 						<th>操作</th>
 					</tr>
 					<volist name="person" id="vo">
@@ -52,8 +53,9 @@
 							<td><a href="#" onclick='$("#right").load("__APP__/Personnel_info/info_more/pid/<{$vo.pid}>")'><{$vo.name}></a></td>
 							<td><{$vo.gender}></td>
 							<td><{$vo.IDNo}></td>
-							<td><{$vo.authority}></td>
-							<td><a href="#" onclick='$("#right").load("__APP__/Personnel_info/person_editor/pid/<{$vo.pid}>")'>修改/</a><a href="__APP__/Personnel_info/person_del/pid/<{$vo.pid}>" onclick="return confirmd()" >删除/</a><a href="#" onclick='$("#right").load("__APP__/Authority/change_authority/pid/<{$vo.pid}>")'>修改权限/</a><a href="#" onclick='$("#right").load("__APP__/Salary_ss/sss_personal/pid/<{$vo.pid}>")'>查看工资社保</a></td>
+							<td><{$vo.current_post}></td>
+							<td><{$vo.department}></td>
+							<td><a href="#" onclick='$("#right").load("__APP__/Personnel_info/person_editor/pid/<{$vo.pid}>/authority/3")'>修改/</a><a href="__APP__/Personnel_info/person_del/pid/<{$vo.pid}>/authority/3" onclick="return confirmd()" >辞退/</a><a href="#" onclick='$("#right").load("__APP__/Salary_ss/sss_personal/pid/<{$vo.pid}>")'>查看工资社保</a></td>
 						</tr>
 					</volist>
 				</table>
